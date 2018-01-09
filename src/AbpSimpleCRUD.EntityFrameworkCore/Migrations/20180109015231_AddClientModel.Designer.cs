@@ -15,9 +15,10 @@ using System;
 namespace AbpSimpleCRUD.Migrations
 {
     [DbContext(typeof(AbpSimpleCRUDDbContext))]
-    partial class AbpSimpleCRUDDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180109015231_AddClientModel")]
+    partial class AddClientModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
