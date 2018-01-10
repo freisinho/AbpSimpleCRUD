@@ -33,7 +33,7 @@ namespace AbpSimpleCRUD.Models.Clients
         public void AddAge(int age)
         {
             if(age < 0)
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("Age", "Age can't be a negative number");
 
             Age = age;
         } 
