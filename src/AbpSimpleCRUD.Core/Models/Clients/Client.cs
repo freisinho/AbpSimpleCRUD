@@ -14,15 +14,20 @@ namespace AbpSimpleCRUD.Models.Clients
 
         [Required]
         [MaxLength(MaxNameSize)]
-        public string FirstName { get; set; }
+        public string FirstName { get; private set; }
 
         [MaxLength(MaxNameSize)]
-        public string LastName { get; set; }
+        public string LastName { get; private set; }
 
         public int Age { get; private set;}
 
 
-        public Client() => CreationTime = DateTime.Now;
+        public Client(string firstName, string lastName)
+        {
+            CreationTime = DateTime.Now;
+            FirstName = firstName;
+            LastName = lastName;
+        }
 
 
         public void AddAge(int age)
