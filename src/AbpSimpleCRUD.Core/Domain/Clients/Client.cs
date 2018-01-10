@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AbpSimpleCRUD.Models.Clients
+namespace AbpSimpleCRUD.Domain.Clients
 {
     [Table("Clients")]
     public class Client : FullAuditedEntity<long>
