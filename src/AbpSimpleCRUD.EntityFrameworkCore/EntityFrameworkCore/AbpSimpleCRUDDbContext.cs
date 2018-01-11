@@ -3,7 +3,7 @@ using Abp.Zero.EntityFrameworkCore;
 using AbpSimpleCRUD.Authorization.Roles;
 using AbpSimpleCRUD.Authorization.Users;
 using AbpSimpleCRUD.MultiTenancy;
-using AbpSimpleCRUD.Models.Clients;
+using AbpSimpleCRUD.Domain.Clients;
 
 namespace AbpSimpleCRUD.EntityFrameworkCore
 {
