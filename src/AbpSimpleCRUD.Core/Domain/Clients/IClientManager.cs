@@ -11,5 +11,6 @@ namespace AbpSimpleCRUD.Domain.Clients
         Task<Client> Update(Client client);
         Task Delete(long id);
         Task<Client> GetById(long id);
+        Task<List<Client>> GetAll();
     }
 }

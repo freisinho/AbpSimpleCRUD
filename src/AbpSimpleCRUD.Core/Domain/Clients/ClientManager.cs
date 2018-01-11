@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.Domain.Services;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AbpSimpleCRUD.Domain.Clients
@@ -31,6 +32,11 @@ namespace AbpSimpleCRUD.Domain.Clients
         public async Task<Client> GetById(long id)
         {
             return await _clientRepository.GetAsync(id);
+        }
+
+        public async Task<List<Client>> GetAll()
+        {
+            return await _clientRepository.GetAllListAsync();
         }
     }
 }
