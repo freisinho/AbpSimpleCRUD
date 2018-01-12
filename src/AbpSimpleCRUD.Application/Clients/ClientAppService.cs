@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Abp.AutoMapper;
 using AbpSimpleCRUD.Clients.Dtos;
 using AbpSimpleCRUD.Domain.Clients;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AbpSimpleCRUD.Clients
 {
@@ -17,6 +18,7 @@ namespace AbpSimpleCRUD.Clients
             _clientManager = clientManager;
         }
 
+        [HttpPost]
         public async Task<CreateClientOutput> CreateClient(CreateClientInput input)
         {
             var client = input.MapTo<Client>();
