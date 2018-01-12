@@ -12,6 +12,7 @@ using AbpSimpleCRUD.Authentication.JwtBearer;
 using AbpSimpleCRUD.Configuration;
 using AbpSimpleCRUD.Identity;
 using AbpSimpleCRUD.Web.Resources;
+using Swashbuckle.AspNetCore.Swagger;
 
 #if FEATURE_SIGNALR
 using Owin;
@@ -47,6 +48,12 @@ namespace AbpSimpleCRUD.Web.Startup
 #if FEATURE_SIGNALR_ASPNETCORE
             services.AddSignalR();
 #endif
+            // Configure Swagger 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Info { Title = "AbpSimpleCRUD API", Version = "v1" });
+                options.DocInclusionPredicate((docName, description) => true);
+            });
 
             // Configure Abp and Dependency Injection
             return services.AddAbp<AbpSimpleCRUDWebMvcModule>(
@@ -54,7 +61,7 @@ namespace AbpSimpleCRUD.Web.Startup
                 options => options.IocManager.IocContainer.AddFacility<LoggingFacility>(
                     f => f.UseAbpLog4Net().WithConfig("log4net.config")
                 )
-            );
+            );            
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -96,6 +103,13 @@ namespace AbpSimpleCRUD.Web.Startup
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseSwagger();
+            //Enable middleware to serve swagger - ui assets(HTML, JS, CSS etc.)
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "AbpSimpleCRUD API V1");
+            }); //URL: /swagger 
         }
 
 #if FEATURE_SIGNALR
