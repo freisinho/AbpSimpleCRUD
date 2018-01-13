@@ -37,7 +37,7 @@ namespace AbpSimpleCRUD.Web.Startup
         {
             // MVC
             services.AddMvc(
-                //options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
+                options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
             );
 
             IdentityRegistrar.Register(services);
