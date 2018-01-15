@@ -21,6 +21,10 @@ namespace AbpSimpleCRUD
                 config.CreateMap<CreateClientInput, Client>()
                 .ConstructUsing(x => new Client(x.FirstName, x.LastName))
                 .AfterMap((src, dest) => dest.AddAge(src.Age));
+
+                config.CreateMap<UpdateClientInput, Client>()
+                .ConstructUsing(x => new Client(x.FirstName, x.LastName))
+                .AfterMap((src, dest) => dest.AddAge(src.Age));
             });
         }
 
