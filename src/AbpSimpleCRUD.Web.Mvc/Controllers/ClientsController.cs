@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Controllers;
 using AbpSimpleCRUD.Clients;
+using AbpSimpleCRUD.Clients.Dtos;
 using AbpSimpleCRUD.Web.Models.Clients;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +27,20 @@ namespace AbpSimpleCRUD.Web.Mvc.Controllers
                 Clients = clients.Clients
             };
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View("Create");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateClientViewModel client)
+        {
+            var clientInput = ObjectMapper.Map<CreateClientInput>(client);
+            var result = await _clientAppService.CreateClient(clientInput);
+            return Redirect(nameof(Index));
         }
     }
 }
