@@ -19,6 +19,10 @@ namespace AbpSimpleCRUD.Domain.Clients
 
         public int Age { get; private set;}
 
+        private Client()
+        {
+            CreationTime = DateTime.Now;
+        }
 
         public Client(string firstName, string lastName)
         {
