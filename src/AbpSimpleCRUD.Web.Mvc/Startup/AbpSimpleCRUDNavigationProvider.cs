@@ -22,6 +22,14 @@ namespace AbpSimpleCRUD.Web.Startup
                     )
                 ).AddItem(
                     new MenuItemDefinition(
+                        PageNames.Clients,
+                        L("Clients"),
+                        url: "Clients",
+                        icon: "business",
+                        requiredPermissionName: PermissionNames.Pages_Tenants
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
                         PageNames.Tenants,
                         L("Tenants"),
                         url: "Tenants",
